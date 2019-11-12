@@ -5,6 +5,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 
+from flask import Flask
+from flask import request
+from flask import render_template
+app = Flask(__name__)
+
+
 df = pd.read_csv('dataset.csv',engine='c',parse_dates=['DATE'])
 
 df.DATE = df.DATE.astype(np.int64)
@@ -57,5 +63,11 @@ def predict_USD(date):
 
 print (predict_USD('2019-11-09'))
 
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        return predict_USD(request.form['date'])
+    else:
+        return render_template('index.html')
 
 
