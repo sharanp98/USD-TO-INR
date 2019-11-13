@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UST to INR Predictor</title>
+  <meta charset="UTF-8">
+  <title>USD TO INR</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
 </head>
+
 <body>
-    <h1>Enter the date below in format YYYY-MM-DD :</h1>
+ <div class="login">
+    <h1>Predict USD-INR</h1>
+    
     <form method="POST">
-        <input type="text" name="date">
-        <input type="submit">
+    	<input type="text" name="date" placeholder="Date" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
 </body>
 </html>
