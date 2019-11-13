@@ -61,13 +61,9 @@ def predict_USD(date):
     
     return "Prediction : 1 USD = " + str(round(USD[0],2)) + " INR"
 
-print (predict_USD('2019-11-09'))
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        return predict_USD(request.form['date'])
+        return ( render_template('index.html',pred = predict_USD(request.form['date']) ) )
     else:
         return render_template('index.html')
-
-
